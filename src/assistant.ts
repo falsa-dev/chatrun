@@ -42,7 +42,7 @@ export const chatRun = async (chat: string, run: string): Promise<string> => {
     messages: [
       {
         role: "user",
-        content: chat,
+        content: `My CLI is ${run}. I want to: ${chat}`,
       },
     ],
   });
