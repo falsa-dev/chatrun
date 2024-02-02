@@ -1,19 +1,26 @@
 import { command, run, string, number, positional, option } from "cmd-ts";
 
 const cmd = command({
-  name: "my-command",
-  description: "print something to the screen",
+  name: "chatrun",
+  description: "Run any CLI with natural language",
   version: "1.0.0",
   args: {
-    number: positional({ type: number, displayName: "num" }),
-    message: option({
-      long: "greeting",
+    run: option({
+      long: "run",
+      short: "r",
       type: string,
+      description: "The CLI to run",
+    }),
+    chat: option({
+      long: "chat",
+      short: "c",
+      type: string,
+      description: "What to do with the CLI in natural language",
     }),
   },
   handler: (args) => {
-    args.message; // string
-    args.number; // number
+    args.chat; // string
+    args.run; // number
     console.log(args);
   },
 });

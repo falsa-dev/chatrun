@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cmd-ts": "^0.13.0"
+    "cmd-ts": "^0.13.0",
+    "openai": "^4.26.0"
   }
 }
