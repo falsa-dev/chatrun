@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "tsx ./src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -11,6 +12,12 @@
   "license": "ISC",
   "dependencies": {
     "cmd-ts": "^0.13.0",
-    "openai": "^4.26.0"
+    "execa": "^8.0.1",
+    "openai": "^4.26.0",
+    "tsx": "^4.7.0",
+    "zx": "^7.2.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.16"
   }
 }

@@ -1,4 +1,6 @@
 import { command, run, string, number, positional, option } from "cmd-ts";
+import { chatRun } from "./assistant";
+import { execaCommand } from "execa";
 
 const cmd = command({
   name: "chatrun",
@@ -18,10 +20,9 @@ const cmd = command({
       description: "What to do with the CLI in natural language",
     }),
   },
-  handler: (args) => {
-    args.chat; // string
-    args.run; // number
-    console.log(args);
+  handler: async (args) => {
+    const command = await chatRun(args.chat, args.run);
+    console.log(command);
   },
 });
 
