@@ -1,5 +1,8 @@
 import { command, option, run, string } from "cmd-ts";
 import { runLangchainAgentExecutor } from "./langchain";
+import { execa } from "execa";
+import consola from "consola";
+import clipboard from "clipboardy";
 
 const cmd = command({
   name: "chatrun",
@@ -22,7 +25,19 @@ const cmd = command({
   handler: async (args) => {
     // make sure to EXPORT=OPENAI_API_KEY in your environment first
     const result = await runLangchainAgentExecutor(args.chat, args.run);
-    console.log(result);
+
+    let command = "";
+    try {
+      const parsed = JSON.parse(result);
+      command = parsed?.command ?? "";
+    } catch (e) {
+      return;
+    }
+
+    consola.box(command);
+
+    clipboard.writeSync(command);
+    consola.success("Copied to clipboard");
   },
 });
 

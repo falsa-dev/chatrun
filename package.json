@@ -13,6 +13,7 @@
   "dependencies": {
     "@langchain/core": "^0.1.40",
     "@langchain/openai": "^0.0.15",
+    "clipboardy": "^4.0.0",
     "cmd-ts": "^0.13.0",
     "consola": "^3.2.3",
     "execa": "^8.0.1",
