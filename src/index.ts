@@ -1,8 +1,7 @@
-import { command, option, run, string } from "cmd-ts";
-import { runLangchainAgentExecutor } from "./langchain";
-import { execa } from "execa";
-import consola from "consola";
 import clipboard from "clipboardy";
+import { command, option, run, string } from "cmd-ts";
+import consola from "consola";
+import { runLangchainAgentExecutor } from "./langchain";
 
 const cmd = command({
   name: "chatrun",
