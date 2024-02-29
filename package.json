@@ -11,8 +11,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@langchain/core": "^0.1.40",
+    "@langchain/openai": "^0.0.15",
     "cmd-ts": "^0.13.0",
+    "consola": "^3.2.3",
     "execa": "^8.0.1",
+    "langchain": "^0.1.24",
     "openai": "^4.26.0",
     "tsx": "^4.7.0",
     "zx": "^7.2.3"

@@ -1,4 +1,4 @@
-export const promptBuilder = () => {
+export const systemPrompt = () => {
   return `
   You will receive:
   1. A CLI command e.g. "soxi"

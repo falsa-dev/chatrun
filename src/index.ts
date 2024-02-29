@@ -1,5 +1,5 @@
-import { command, run, string, number, positional, option } from "cmd-ts";
-import { chatRun } from "./assistant";
+import { command, option, run, string } from "cmd-ts";
+import { runLangchainAgentExecutor } from "./langchain";
 
 const cmd = command({
   name: "chatrun",
@@ -20,8 +20,9 @@ const cmd = command({
     }),
   },
   handler: async (args) => {
-    const command = await chatRun(args.chat, args.run);
-    console.log(command);
+    // make sure to EXPORT=OPENAI_API_KEY in your environment first
+    const result = await runLangchainAgentExecutor(args.chat, args.run);
+    console.log(result);
   },
 });
 
