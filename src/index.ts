@@ -1,6 +1,5 @@
 import { command, run, string, number, positional, option } from "cmd-ts";
 import { chatRun } from "./assistant";
-import { execaCommand } from "execa";
 
 const cmd = command({
   name: "chatrun",

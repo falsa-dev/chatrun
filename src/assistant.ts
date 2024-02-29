@@ -1,6 +1,7 @@
 import { execaCommand } from "execa";
 import { writeFile } from "node:fs/promises";
 import OpenAI from "openai";
+import { promptBuilder } from "./prompt";
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -16,8 +17,7 @@ export const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 export const createAssistant = () =>
   openai.beta.assistants.create({
-    instructions:
-      "You will be provided a CLI to run, and natural language describing what to do with it. You can use the 'shell' tool to get information about the CLI or its commands by running them in a sandboxed shell. Do not rely on your implicit knowledge because the provided CLI might be different from the ones you know. Remember that running a CLI command without any arguments, or with a --help flag, or using 'man', all of these usually help provide help text. If the help output is not enough, you can keep probing subcommands using the 'shell' tool. You can do this until you have enough information. Then, return the final CLI command (and ONLY the command, with no additional explanation) that will help accomplish the natural language task.",
+    instructions: promptBuilder(),
     model: "gpt-4-turbo-preview",
     tools: [
       {
@@ -52,7 +52,10 @@ export const chatRun = async (chat: string, run: string): Promise<string> => {
     messages: [
       {
         role: "user",
-        content: `My CLI is ${run}. I want to: ${chat}`,
+        content: `
+        1. My CLI is: ${run}. 
+        2. The task: ${chat}
+        `,
       },
     ],
   });
@@ -90,6 +93,9 @@ export const chatRun = async (chat: string, run: string): Promise<string> => {
         const messages = await openai.beta.threads.messages.list(thread.id);
         const lastMessage = messages.data.at(0);
         if (lastMessage?.content?.[0].type === "text") {
+          const finalCommand = lastMessage.content[0].text.value;
+          const { all } = await execaCommand(finalCommand);
+          console.log(all);
           return lastMessage.content[0].text.value;
         }
         return "";
