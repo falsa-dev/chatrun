@@ -2,6 +2,9 @@
 
 Use any CLI with natural language.
 
+![cover](https://github.com/falsa-dev/chatrun/assets/3000809/f4a24585-ed95-4974-bffe-cf4968713fad)
+
+
 ## Pre-requisites
 
 Export `OPENAI_API_KEY` in your environment.
