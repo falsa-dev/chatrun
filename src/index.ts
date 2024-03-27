@@ -5,6 +5,10 @@ import { command, option, run, string } from "cmd-ts";
 import consola from "consola";
 import { runLangchainAgentExecutor } from "./langchain";
 
+process.on("warning", (warning) => {
+  console.log(warning.stack);
+});
+
 const cmd = command({
   name: "chatrun",
   description: "Run any CLI with natural language",
