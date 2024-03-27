@@ -16,8 +16,16 @@ export OPENAI_API_KEY=sk-...
 npm install -g chatrun
 ```
 
-## Usage
+## Usage examples
+
+List all packages installed with `brew`.
 
 ```sh
-chatrun --run brew --chat "list all packages"
+chatrun --run "brew" --chat "list all packages"
+```
+
+Find all commits from yesterday.
+
+```sh
+chatrun --run "git" --chat "find all commits from yesterday"
 ```
