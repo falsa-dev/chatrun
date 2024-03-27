@@ -1,3 +1,5 @@
+#!/bin/env node
+
 import clipboard from "clipboardy";
 import { command, option, run, string } from "cmd-ts";
 import consola from "consola";

@@ -2,11 +2,22 @@
   "name": "chatrun",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "type": "module",
+  "bin": "./dist/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "tsx ./src/index.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "pnpm tsup --config tsup.config.ts"
   },
   "keywords": [],
   "author": "",
@@ -19,11 +30,12 @@
     "consola": "^3.2.3",
     "execa": "^8.0.1",
     "langchain": "^0.1.24",
-    "openai": "^4.26.0",
-    "tsx": "^4.7.0",
-    "zx": "^7.2.3"
+    "openai": "^4.26.0"
   },
   "devDependencies": {
-    "@types/node": "^20.11.16"
+    "@types/node": "^20.11.16",
+    "tsup": "^8.0.2",
+    "tsx": "^4.7.0",
+    "typescript": "^5.4.3"
   }
 }

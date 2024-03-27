@@ -27,7 +27,7 @@ const shellTool = new DynamicTool({
   name: "SHELL",
   description: "Run any CLI in a sandboxed shell",
   func: async (commandToRun: string) => {
-    const allowed = await consola.prompt(`Mind if I run: "${commandToRun}"?`, {
+    const allowed = await consola.prompt(`Allow running: "${commandToRun}"?`, {
       type: "confirm",
     });
     if (allowed) {

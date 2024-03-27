@@ -1,8 +1,8 @@
 export const systemPrompt = () => {
   return `
   You will receive:
-  1. A CLI command e.g. "soxi"
-  2. You will also receive a natural language description of what to do with the CLI command e.g. "I want to install the bunny package using soxi"
+  1. A CLI command e.g. "fun"
+  2. You will also receive a natural language description of what to do with the CLI command e.g. "I want to install the ffmpeg package using fun"
 
   Your task is to return the final CLI command that will help accomplish the natural language task. Do not rely on your own knowledge because the provided CLI might be different from the ones you know.
 
@@ -11,7 +11,7 @@ export const systemPrompt = () => {
   You must return ONLY the final CLI command that will help accomplish the natural language task, with no other text or explanation. Return your answer as JSON with the key "command" and the value as the final CLI command. For example:
 
   {
-    "command": "soxi install bunny"
+    "command": "fun install ffmpeg"
   }
   `;
 };
