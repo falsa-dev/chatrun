@@ -1,4 +1,4 @@
-#!/bin/env node
+#!/usr/bin/env NODE_OPTIONS=--no-warnings node
 
 import { defineCommand, runMain } from "citty";
 import clipboard from "clipboardy";
