@@ -1,36 +1,32 @@
 #!/bin/env node
 
+import { defineCommand, runMain } from "citty";
 import clipboard from "clipboardy";
-import { command, option, run, string } from "cmd-ts";
 import consola from "consola";
 import { runLangchainAgentExecutor } from "./langchain";
 
-process.on("warning", (warning) => {
-  console.log(warning.stack);
-});
-
-const cmd = command({
-  name: "chatrun",
-  description: "Run any CLI with natural language",
-  version: "1.0.0",
-  args: {
-    run: option({
-      long: "run",
-      short: "r",
-      type: string,
-      description: "The CLI to run",
-    }),
-    chat: option({
-      long: "chat",
-      short: "c",
-      type: string,
-      description: "What to do with the CLI in natural language",
-    }),
+const main = defineCommand({
+  meta: {
+    name: "chatrun",
+    version: "1.0.0",
+    description: "Run any CLI with natural language",
   },
-  handler: async (args) => {
-    // make sure to EXPORT=OPENAI_API_KEY in your environment first
+  args: {
+    run: {
+      type: "string",
+      description: "The CLI to run",
+      required: true,
+      alias: "r",
+    },
+    chat: {
+      type: "string",
+      description: "What to do with the CLI in natural language",
+      required: true,
+      alias: "c",
+    },
+  },
+  async run({ args }) {
     const result = await runLangchainAgentExecutor(args.chat, args.run);
-
     let command = "";
     try {
       const parsed = JSON.parse(result);
@@ -38,12 +34,10 @@ const cmd = command({
     } catch (e) {
       return;
     }
-
     consola.box(command);
-
     clipboard.writeSync(command);
     consola.success("Copied to clipboard");
   },
 });
 
-run(cmd, process.argv.slice(2));
+runMain(main);
