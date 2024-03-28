@@ -1,7 +1,7 @@
 {
   "name": "chatrun",
   "version": "1.0.0",
-  "description": "",
+  "description": "Use any CLI with natural language",
   "type": "module",
   "bin": "./dist/index.js",
   "exports": {
@@ -19,9 +19,29 @@
     "dev": "tsx --trace-warnings  ./src/index.ts",
     "build": "pnpm tsup --config tsup.config.ts"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "gpt",
+    "openai",
+    "cli",
+    "chat"
+  ],
+  "contributors": [
+    {
+      "name": "Sarim Abbas",
+      "email": "hello@sarimabbas.com",
+      "url": "https://sarimabbas.com"
+    },
+    {
+      "name": "Felicia Chang",
+      "email": "ffeliciachang@gmail.com",
+      "url": "https://feliciachang.me"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/falsa-dev/chatrun.git"
+  },
+  "license": "MIT",
   "dependencies": {
     "@langchain/core": "^0.1.51",
     "@langchain/openai": "^0.0.23",
