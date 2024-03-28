@@ -1,6 +1,6 @@
 {
   "name": "chatrun",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Use any CLI with natural language",
   "type": "module",
   "bin": "./dist/index.js",
